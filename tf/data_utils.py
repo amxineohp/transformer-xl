@@ -168,6 +168,8 @@ class Corpus(object):
             self.cutoffs, bin_sizes, use_tpu=use_tpu)
         file_names.append(file_name)
 
+    print("record_nifo_path:{}".format(record_info_path))
+
     with open(record_info_path, "w") as fp:
       record_info = {
         "filenames": file_names,
