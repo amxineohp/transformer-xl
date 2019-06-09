@@ -21,6 +21,7 @@ class Vocab(object):
     self.lower_case = lower_case
     self.delimiter = delimiter
     self.vocab_file = vocab_file
+    print('vocab special: {}'.format(self.special))
 
   def tokenize(self, line, add_eos=False, add_double_eos=False):
     line = line.strip()
