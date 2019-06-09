@@ -2,7 +2,7 @@
 
 # Path
 LOCAL_DIR=../data/wikitext-103/
-GSDATA= ./gddata
+GSDATA= ./gsdata
 GSEXP= ./gsexp
 
 # TPU setting
