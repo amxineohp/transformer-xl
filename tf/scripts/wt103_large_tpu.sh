@@ -6,8 +6,8 @@ GSDATA=
 GSEXP=
 
 # TPU setting
-NUM_HOST=4
-NUM_CORE=16 # TPUv2 -> 8 | TPUv3 -> 16
+NUM_HOST=1
+NUM_CORE=8 # TPUv2 -> 8 | TPUv3 -> 16
 
 TEST_NUM_HOST=1
 TEST_NUM_CORE=8 # TPUv2 -> 8 | TPUv3 -> 16
@@ -24,14 +24,14 @@ D_INNER=4096
 # Training
 TGT_LEN=384
 MEM_LEN=384
-TRAIN_BSZ=128
-VALID_BSZ=128
+TRAIN_BSZ=16
+VALID_BSZ=16
 
 # Testing
 TEST_TGT_LEN=128
 TEST_MEM_LEN=1600
 TEST_CLAMP_LEN=1000
-TEST_BSZ=8
+TEST_BSZ=2
 
 if [[ $1 == 'train_data' ]]; then
     python data_utils.py \
