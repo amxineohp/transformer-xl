@@ -97,6 +97,7 @@ case $1 in
         cd ..
     fi
     ;;
+esac
     
 echo "---"
 echo "Happy language modeling :)"
