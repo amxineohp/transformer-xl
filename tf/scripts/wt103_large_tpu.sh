@@ -2,8 +2,8 @@
 
 # Path
 LOCAL_DIR=../data/wikitext-103/
-GSDATA=./gsdata
-GSEXP=./gsexp
+GSDATA=
+GSEXP=
 
 # TPU setting
 NUM_HOST=1
@@ -33,7 +33,6 @@ TEST_MEM_LEN=1600
 TEST_CLAMP_LEN=1000
 TEST_BSZ=8
 
-mkdir -p ${GSDATA}/wt103-tfrecords
 if [[ $1 == 'train_data' ]]; then
     python data_utils.py \
         --data_dir=${LOCAL_DIR}/ \
@@ -47,10 +46,11 @@ if [[ $1 == 'train_data' ]]; then
         ${@:2}
 
     SRC_PATTERN=train.bsz-${TRAIN_BSZ}.tlen-${TGT_LEN}.core-${NUM_CORE}*
-    cp  ${LOCAL_DIR}/tfrecords/${SRC_PATTERN} ${GSDATA}/wt103-tfrecords/
+    gsutil cp ${LOCAL_DIR}/tfrecords/${SRC_PATTERN} ${GSDATA}/wt103-tfrecords/
+
 
     SRC_PATTERN=valid.bsz-${VALID_BSZ}.tlen-${TGT_LEN}.core-${NUM_CORE}*
-    cp  ${LOCAL_DIR}/tfrecords/${SRC_PATTERN} ${GSDATA}/wt103-tfrecords/
+    gsutil cp ${LOCAL_DIR}/tfrecords/${SRC_PATTERN} ${GSDATA}/wt103-tfrecords/
 
 elif [[ $1 == 'test_data' ]]; then
     python data_utils.py \
@@ -64,7 +64,7 @@ elif [[ $1 == 'test_data' ]]; then
         ${@:2}
 
     SRC_PATTERN=test.bsz-${TEST_BSZ}.tlen-${TEST_TGT_LEN}.core-${TEST_NUM_CORE}*
-    cp  ${LOCAL_DIR}/tfrecords/${SRC_PATTERN} ${GSDATA}/wt103-tfrecords/
+    gsutil cp ${LOCAL_DIR}/tfrecords/${SRC_PATTERN} ${GSDATA}/wt103-tfrecords/
 
 elif [[ $1 == 'train' ]]; then
     echo 'Run training...'
