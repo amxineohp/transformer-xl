@@ -41,7 +41,7 @@ if [[ $1 == 'train_data' ]]; then
         --per_host_train_bsz=${TRAIN_BSZ} \
         --per_host_valid_bsz=${VALID_BSZ} \
         --num_core_per_host=${NUM_CORE} \
-        --num_passes=10 \
+        --num_passes=1 \
         --use_tpu=True \
         ${@:2}
 
