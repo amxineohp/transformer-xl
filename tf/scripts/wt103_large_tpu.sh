@@ -2,8 +2,8 @@
 
 # Path
 LOCAL_DIR=../data/wikitext-103/
-GSDATA=
-GSEXP=
+GSDATA="$GSDATA"
+GSEXP="$GSEXP"
 
 # TPU setting
 NUM_HOST=1
