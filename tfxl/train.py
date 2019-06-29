@@ -12,7 +12,7 @@ from six.moves import xrange  # pylint: disable=redefined-builtin
 
 import tensorflow as tf
 from tensorflow.gfile import Exists as exists
-import model
+import models
 import data_utils
 import tpu_estimator
 
@@ -206,7 +206,7 @@ def get_model_fn(n_token, cutoffs, train_bin_sizes, eval_bin_sizes):
     tf.logging.info("Vocab size : {}".format(n_token))
     tf.logging.info("Batch size : {}".format(batch_size))
 
-    loss, new_mems = model.transformer(
+    loss, new_mems = models.transformer(
         dec_inp=inp,
         target=tgt,
         mems=mems,

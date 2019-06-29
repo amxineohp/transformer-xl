@@ -10,7 +10,7 @@ from absl import flags
 import absl.logging as _logging  # pylint: disable=unused-import
 
 import tensorflow as tf
-import model
+import models
 import data_utils
 
 from gpu_utils import assign_to_gpu, average_grads_and_vars
@@ -156,7 +156,7 @@ def get_model_fn(n_token, cutoffs):
       for i in range(1, len(tie_projs)):
         tie_projs[i] = True
 
-    loss, new_mems = model.transformer(
+    loss, new_mems = models.transformer(
         dec_inp=inp,
         target=tgt,
         mems=mems,

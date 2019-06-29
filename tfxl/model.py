@@ -410,7 +410,6 @@ def mul_adaptive_logsoftmax(hidden, target, n_token, d_embed, d_proj, cutoffs,
 
   return nll
 
-
 def _create_mask(qlen, mlen, same_length=False):
   attn_mask = tf.ones([qlen, qlen])
   mask_u = tf.matrix_band_part(attn_mask, 0, -1)
@@ -465,6 +464,7 @@ def transformer(dec_inp, target, mems, n_token, n_layer, d_model, d_embed,
     qlen = tf.shape(dec_inp)[0]
     mlen = tf.shape(mems[0])[0] if mems is not None else 0
     klen = mlen + qlen
+
 
     if proj_initializer is None:
       proj_initializer = initializer
